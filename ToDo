@@ -1,0 +1,11 @@
+Goal is to create a POS application
+
+Create ToDo file - Done
+Create login page - Done
+Create welcome page - Done
+Create login logic to go to welcome page on success validation - Done
+Create logic to go to welcome page if already logged in - Done
+Create logic in welcome page to go to login page if not already logged in 
+Create register page in login
+Create admin landing page and user login page
+admin should be able to see all the users and option to make another user admin?? or remove admin
