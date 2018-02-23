@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
+	<%@ page errorPage="errors.jsp" %>  
 	<%
 		String username = (String) session.getAttribute("loggedInUser");
 		if ("".equals(username) || username == null)
@@ -21,7 +23,7 @@
 	<%
 		}
 		else {
-			out.println("Welcome back " + username);
+			out.println("<h5>Welcome back " + username + "</h5>");
 	%>
 	<jsp:include page="welcome.jsp"></jsp:include>
 	<%

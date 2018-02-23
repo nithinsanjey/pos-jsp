@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="css/bootstrap.min.css">
 <title>Insert title here</title>
 </head>
 <body>
-	<p>Welcome to landing page</p>
+	
+	<jsp:include page="header.jsp"></jsp:include>
+	<h2>Welcome to POS application</h2>
 </body>
 </html>
