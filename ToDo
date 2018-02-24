@@ -7,6 +7,16 @@ Create login logic to go to welcome page on success validation - Done
 Create logic to go to welcome page if already logged in - Done
 Handling exception to prevent java error on web browser - Partially Done - found no necessity yet
 Create logic in welcome page to go to login page if not already logged in  - Done
-Create register page in login
-Create admin landing page and user login page
-admin should be able to see all the users and option to make another user admin?? or remove admin
+Create add new user after successful login - Create wiki page for this feature - Done
+Develop add new user feature 
+	Create new database for this one
+	Create add user page with username , firstname, last name, date of birth, gender, password, role(default), branch(default)
+	Create a change password page for every user - so that users can change password themselves and security questions to help them on forget password
+	
+Create admin landing page and user login page - both are same - Done
+Adding new products
+	Create database for this.
+	Create add product, update page
+	Create view all product details
+Update existing products like rate, quantity, etc..
+Create view all my managed member
