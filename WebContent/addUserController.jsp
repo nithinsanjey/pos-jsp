@@ -27,9 +27,7 @@
 			//Date drama
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			String dateInString = request.getParameter("dob");
-			System.out.println(dateInString + " This is the date in string");
 			java.util.Date date = formatter.parse(dateInString);
-			System.out.println(date + "this is the date" + " and this is the time " + date.getTime());
 			Date dob = new java.sql.Date(date.getTime());
 			
 			

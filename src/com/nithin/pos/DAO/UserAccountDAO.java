@@ -83,13 +83,11 @@ public class UserAccountDAO {
         SecureRandom random = new SecureRandom();
         byte bytes[] = new byte[32];
         random.nextBytes(bytes);
-        //System.out.println((bytes[0]));
 
         StringBuffer passwordSalt = new StringBuffer();
         for (int i = 0; i < bytes.length; i++) {
             passwordSalt.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
         }
-        System.out.println("Hex format : " + passwordSalt.toString());
         //returns a 64 length hexString
         return passwordSalt.toString();
     }
