@@ -8,11 +8,18 @@ Create logic to go to welcome page if already logged in - Done
 Handling exception to prevent java error on web browser - Partially Done - found no necessity yet
 Create logic in welcome page to go to login page if not already logged in  - Done
 Create add new user after successful login - Create wiki page for this feature - Done
+Create a button in welcome page for add user - Done
+Create a add user page(Should I be using bootstrap??) - No - so Done
 Develop add new user feature 
-	Create new database for this one
-	Create add user page with username , firstname, last name, date of birth, gender, password, role(default), branch(default)
-	Create a change password page for every user - so that users can change password themselves and security questions to help them on forget password
-	
+	Create new database table for this one - Done
+	Create add user page with username , firstname, last name, date of birth, gender, password, role(default), branch(default) and other needed values - Done
+	Create add user controller - Done
+	Convert date from string - Done
+	use java.security.SecureRandom - Done
+	Create a change password page for every user - so that users can change password themselves - Done 
+	Create security questions to help them on forget password - Postponding
+Fix ubuntu compatibility by database names - Done
+Create a proper user details schema to proceed with developement - Done
 Create admin landing page and user login page - both are same - Done
 Adding new products
 	Create database for this.

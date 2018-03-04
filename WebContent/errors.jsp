@@ -1,5 +1,5 @@
 <%@ page isErrorPage="true" %>  
   
-<h3>Sorry an exception occured!</h3>  
+<h3>Sorry an exception occurred!</h3>  
   
 Exception is: <%= exception %>  

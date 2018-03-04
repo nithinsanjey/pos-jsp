@@ -1,4 +1,4 @@
-<%@page import="com.nithin.pos.DAO.UserLoginDAO"%>  
+<%@page import="com.nithin.pos.POJO.UserLogin,com.nithin.pos.DAO.UserAccountDAO"%>  
 <jsp:useBean id="obj" class="com.nithin.pos.POJO.UserLogin"/>  
   
 <jsp:setProperty property="*" name="obj"/>  
@@ -11,7 +11,7 @@
 <%
 	} else {
 		String username = obj.getUsername();
-		boolean status = UserLoginDAO.validateLogin(obj.getUsername(), obj.getPassword());
+		boolean status = UserAccountDAO.validateLogin(obj.getUsername(), obj.getPassword());
 		if(status) {
 			session.setAttribute("loggedInUser", username);
 			out.println("<h3>Welcome " +  session.getAttribute("loggedInUser") + "</h3>");

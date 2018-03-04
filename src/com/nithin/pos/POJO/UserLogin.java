@@ -1,11 +1,8 @@
 package com.nithin.pos.POJO;
 
-import com.nithin.pos.DAO.UserLoginDAO;
-
 public class UserLogin {
 	String username;
 	String password;
-	
 	public String getUsername() {
 		return username;
 	}
@@ -17,9 +14,5 @@ public class UserLogin {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	
-	public boolean validateLogin() {
-		return UserLoginDAO.validateLogin(this.getUsername(), this.getPassword());  // I think this is a better approach to validation, what say? someone?
 	}
 }
