@@ -11,6 +11,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<h2>Welcome to POS application</h2>
 	<a href="addUser.jsp"><button>Add user</button></a>
+	<a href="addProduct.jsp"><button>Add product</button></a>
 	<a href="changePassword.jsp"><button>Change my password</button></a>
 </body>
 </html>
