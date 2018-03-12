@@ -25,8 +25,9 @@ Adding new products
 	Create database for this. - Done
 	Create add product UI - Done
 	Create add product backend - Done
-	Closing DB connections properly do i need singleton or the likes
+	Closing DB connections properly do i need singleton or the likes - Partially done - can touch the table at same time?
 	Create update page
-	Create view all product details
+	Create view all product details - Done
 Update existing products like rate, quantity, etc..
 Create view all my managed member
+Create generate bill page
