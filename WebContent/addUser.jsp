@@ -8,8 +8,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add user</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
-<body>
+<body class="container-fluid">
+<h3>Register a new user here</h3>
 <form action="addUserController.jsp" method="post">
 	User name : <input type="text" name="username">
 	First name : <input type="text" name="firstname">
@@ -22,7 +24,7 @@
 	Re-enter password : <input type="password" name="repassword">
 	<p><input type="submit" value="Add user"></p>
 </form>
-<a href="welcome.jsp"><button>back</button></a><br>
+<a href="welcome.jsp"><button>Back</button></a><br>
 </body>
 </html>
 <%

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
-<body>
+<body class="container-fluid">
 	<%@ page errorPage="errors.jsp" %>  
 	<%
 		String username = (String) session.getAttribute("loggedInUser");

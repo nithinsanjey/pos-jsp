@@ -1,1 +1,1 @@
-<br><a href="logout.jsp">Logout</a><br>
+<a href="logout.jsp"><button>Logout</button></a>

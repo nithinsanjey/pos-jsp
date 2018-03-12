@@ -10,20 +10,22 @@ import java.sql.SQLException;
 
 import com.nithin.pos.POJO.UserAccount;
 import com.nithin.pos.Util.ConnectionProvider;
+import static com.nithin.pos.Config.Provider.HASH_ALGORITHM;
 
 public class UserAccountDAO {
-	private static String hashAlgorithm = "SHA-512";
+	
 	public static boolean validateLogin(String username, String password) {
-		//get the corresponding password salt
-		//use the method
-		//boolean validationResult = validatePassword(passwordSalt1, passwordHash, password, "SHA-512");
+		
 		Connection con = ConnectionProvider.getCon();
 		String ppdSql = "SELECT PASSWORD_SALT,PASSWORD FROM USER_ACCOUNT WHERE USERNAME=?";
 		String ppd, passwordHash;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
 		try {
-			PreparedStatement ps = con.prepareStatement(ppdSql);
+			ps = con.prepareStatement(ppdSql);
 			ps.setString(1, username);
-			ResultSet rs = ps.executeQuery();
+			rs = ps.executeQuery();
+			
 			if (rs.next()) {
 				ppd = rs.getString(1);
 				passwordHash = rs.getString(2);
@@ -31,32 +33,36 @@ public class UserAccountDAO {
 			else {
 				return false;
 			}
-			if (validatePassword(ppd, passwordHash, password, hashAlgorithm)) {
+			if (validatePassword(ppd, passwordHash, password, HASH_ALGORITHM)) {
 				return true;
 			}
+			return false;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
+		} finally {
+			ConnectionProvider.closeQuietly(rs);
+			ConnectionProvider.closeQuietly(ps);
+			ConnectionProvider.closeQuietly(con);
 		}
-		return false;
 	}
 	
 	public static boolean insertUser(UserAccount userAccount) {
 		//validate user data here
 		
-		//insert into database here
+		//Database insertion
 		Connection con = ConnectionProvider.getCon();
 		String sql = "INSERT INTO USER_ACCOUNT(USERNAME,PASSWORD,PASSWORD_SALT,PASSWORD_HASH_ALGORITHM,FIRST_NAME,LAST_NAME,GENDER,DOB,USER_ADDED_BY,ROLE,BRANCH,BRAND) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
-		
+		PreparedStatement ps = null;
 		try {
-			PreparedStatement ps = con.prepareStatement(sql);
+			ps = con.prepareStatement(sql);
 			ps.setString(1, userAccount.getUsername());
 			String passwordSalt = generatePasswordSalt();
-			String passwordHashAlgo = hashAlgorithm;
 			
-			ps.setString(2, calculatePasswordHash(passwordSalt, userAccount.getPassword(), passwordHashAlgo));
+			ps.setString(2, calculatePasswordHash(passwordSalt, userAccount.getPassword(), HASH_ALGORITHM));
 			ps.setString(3, passwordSalt);
-			ps.setString(4, passwordHashAlgo);
+			ps.setString(4, HASH_ALGORITHM);
 			ps.setString(5, userAccount.getFirstName());
 			ps.setString(6, userAccount.getLastName());
 			ps.setString(7, userAccount.getGender());
@@ -67,6 +73,7 @@ public class UserAccountDAO {
 			ps.setString(12, userAccount.getBrand());
 			
 			int status = ps.executeUpdate();
+			
 			if (status == 1) 
 				return true;
 			else
@@ -75,9 +82,38 @@ public class UserAccountDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
+		} finally {
+			ConnectionProvider.closeQuietly(ps);
+			ConnectionProvider.closeQuietly(con);
 		}
-		return false;
 	}
+	
+	public static boolean changePassword(String username, String password) {
+    	Connection con = ConnectionProvider.getCon();
+    	String sql = "UPDATE USER_ACCOUNT SET PASSWORD=?,PASSWORD_SALT=? WHERE USERNAME=?";
+    	String passwordSalt = generatePasswordSalt();
+    	String passwordHash = calculatePasswordHash(passwordSalt, password, HASH_ALGORITHM);
+    	PreparedStatement ps = null;
+    	try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, passwordHash);
+			ps.setString(2, passwordSalt);
+			ps.setString(3, username);
+			int status = ps.executeUpdate();
+			if (status == 1)
+				return true;
+			else
+				return false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			ConnectionProvider.closeQuietly(ps);
+			ConnectionProvider.closeQuietly(con);
+		}
+    	return false;
+    }
 	
 	private static String generatePasswordSalt(){
         SecureRandom random = new SecureRandom();
@@ -143,27 +179,5 @@ public class UserAccountDAO {
             return true;
         else
             return false;
-    }
-    
-    public static boolean changePassword(String username, String password) {
-    	Connection con = ConnectionProvider.getCon();
-    	String sql = "UPDATE USER_ACCOUNT SET PASSWORD=?,PASSWORD_SALT=? WHERE USERNAME=?";
-    	String passwordSalt = generatePasswordSalt();
-    	String passwordHash = calculatePasswordHash(passwordSalt, password, hashAlgorithm);
-    	try {
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, passwordHash);
-			ps.setString(2, passwordSalt);
-			ps.setString(3, username);
-			int status = ps.executeUpdate();
-			if (status == 1)
-				return true;
-			else
-				return false;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	return false;
     }
 }

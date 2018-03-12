@@ -8,9 +8,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Change password</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
-<body>
-<h3>Change password screen :</h3>
+<body class="container-fluid">
+<h3>Change your password here :</h3>
 <form action="changePasswordController.jsp" method="post">
 	Current password : <input type="password" name="currentPassword">
 	<p>Set the password here</p>
@@ -18,7 +19,7 @@
 	Re-enter password : <input type="password" name="repassword">
 	<p><input type="submit" value="Change password"></p>
 </form>
-<a href="welcome.jsp"><button>back</button></a><br>
+<a href="welcome.jsp"><button>Back</button></a><br>
 </body>
 </html>
 <%

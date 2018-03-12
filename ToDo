@@ -24,7 +24,8 @@ Create admin landing page and user login page - both are same - Done
 Adding new products
 	Create database for this. - Done
 	Create add product UI - Done
-	Create add product backend 
+	Create add product backend - Done
+	Closing DB connections properly do i need singleton or the likes
 	Create update page
 	Create view all product details
 Update existing products like rate, quantity, etc..

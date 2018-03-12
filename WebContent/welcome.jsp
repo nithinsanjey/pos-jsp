@@ -6,12 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
-<body>
+<body class="container-fluid">
 	<jsp:include page="header.jsp"></jsp:include>
 	<h2>Welcome to POS application</h2>
 	<a href="addUser.jsp"><button>Add user</button></a>
 	<a href="addProduct.jsp"><button>Add product</button></a>
+	<a href="viewProducts.jsp"><button>View all products</button></a>
 	<a href="changePassword.jsp"><button>Change my password</button></a>
 </body>
 </html>

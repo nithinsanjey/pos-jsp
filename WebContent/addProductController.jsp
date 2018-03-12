@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.sql.Date,java.text.SimpleDateFormat,com.nithin.pos.POJO.UserAccount"%>
+    pageEncoding="UTF-8" import="java.sql.Date,java.text.SimpleDateFormat,com.nithin.pos.POJO.ProductDetail"%>
 
 <%
 	String username = (String) session.getAttribute("loggedInUser");
@@ -9,10 +9,14 @@
 <%		
 	}
 	else{
-		
-			if (false){// need to implement product java code
+			ProductDetail productDetail = new ProductDetail();
+			String productName = request.getParameter("productName");
+			productDetail.setProductName(productName);
+			productDetail.setQuantity(Integer.parseInt(request.getParameter("quantity")));
+			productDetail.setPrice(Float.parseFloat(request.getParameter("price")));
+			if (productDetail.createProduct()) {
 %>
-	<h3>New user <% out.println(username); %> created</h3>
+	<h3>New product <% out.println(productName); %> created</h3>
 	<jsp:include page="welcome.jsp"></jsp:include>
 <%				
 			}

@@ -8,8 +8,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add product</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
-<body>
+<body class="container-fluid">
+<h3>Add a new product here</h3>
 <form action="addProductController.jsp" method="post">
 	Product name : <input type="text" required name="productName">
 	Quantity : <input type="number" min="0" name="quantity">
@@ -17,7 +19,7 @@
 	
 	<p><input type="submit" value="Add product"></p>
 </form>
-<a href="welcome.jsp"><button>back</button></a><br>
+<a href="welcome.jsp"><button>Back</button></a><br>
 </body>
 </html>
 <%

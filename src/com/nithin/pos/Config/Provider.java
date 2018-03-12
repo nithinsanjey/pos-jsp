@@ -5,4 +5,5 @@ public interface Provider {
 	String CONNECTION_URL="jdbc:mysql://localhost:3306/mydb?autoReconnect=true&amp;useSSL=false";  
 	String USERNAME="root";  
 	String PASSWORD="mysql";  
+	String HASH_ALGORITHM = "SHA-512";
 }
