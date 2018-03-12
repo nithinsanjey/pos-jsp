@@ -2,10 +2,10 @@
 To create a point of sale application using JSP
 
 ### Main features:
--Secure login by appropriate users
--User management
--Manage sales product details
--Generate bills
+* Secure login by appropriate users
+* User management
+* Manage sales product details
+* Generate bills
 
 ### Technology
 Java 8, JSP, Bootstrap
@@ -22,7 +22,7 @@ This project does not use any build tools so we have to add the following jar de
 
 * **Nithin Sanjey** - *Initial work* - *sanjeynithin@gmail.com*
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/nithinsanjey/pos-jsp/contributors) who participated in this project.
 
 ## License
 
