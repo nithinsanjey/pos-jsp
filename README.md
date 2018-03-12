@@ -8,10 +8,9 @@ To create a point of sale application using JSP
 * Generate bills
 
 ### Technology
-Java 8, JSP, Bootstrap
-Mysql database - refer wiki page for database creation s
+* Java 8, JSP, Bootstrap
+* Mysql database - refer wiki page for database creation s
 
-Developed using eclipse
 
 ### Dependancy jar files:
 This project does not use any build tools so we have to add the following jar dependancies to our project manually,
@@ -31,3 +30,5 @@ This project is licensed under the GNU GPLv3 License
 ## Acknowledgments
 
 * Thank you to my room mates who encouraged me doing this by their own songs
+* Developed using eclipse
+* Thank you javaTpoint
