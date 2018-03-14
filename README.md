@@ -16,6 +16,8 @@ To create a point of sale application using JSP
 This project does not use any build tools so we have to add the following jar dependancies to our project manually,
 * jstl-1.2.jar
 * mysql-connector-java-5.1.45-bin.jar
+* org-apache-commons-logging.jar
+* log4j-1.2.17.jar
 
 ### Authors
 

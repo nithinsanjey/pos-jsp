@@ -8,11 +8,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 import com.nithin.pos.POJO.UserAccount;
 import com.nithin.pos.Util.ConnectionProvider;
 import static com.nithin.pos.Config.Provider.HASH_ALGORITHM;
 
 public class UserAccountDAO {
+	final static Logger log = Logger.getLogger(UserAccountDAO.class);
 	
 	public static boolean validateLogin(String username, String password) {
 		
@@ -38,8 +41,7 @@ public class UserAccountDAO {
 			}
 			return false;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error("Login failed ", e);
 			return false;
 		} finally {
 			ConnectionProvider.closeQuietly(rs);
@@ -49,9 +51,7 @@ public class UserAccountDAO {
 	}
 	
 	public static boolean insertUser(UserAccount userAccount) {
-		//validate user data here
 		
-		//Database insertion
 		Connection con = ConnectionProvider.getCon();
 		String sql = "INSERT INTO USER_ACCOUNT(USERNAME,PASSWORD,PASSWORD_SALT,PASSWORD_HASH_ALGORITHM,FIRST_NAME,LAST_NAME,GENDER,DOB,USER_ADDED_BY,ROLE,BRANCH,BRAND) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement ps = null;
@@ -74,14 +74,17 @@ public class UserAccountDAO {
 			
 			int status = ps.executeUpdate();
 			
-			if (status == 1) 
+			if (status == 1) {
+				log.info("SUCCESS :: Adding user : " + userAccount.getUsername());
 				return true;
-			else
+			}
+			else {
+				log.info("FAILED :: Adding user : " + userAccount.getUsername() + " with status : " + status);
 				return false;
+			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error("FAILED :: Adding user : " + userAccount.getUsername() , e);
 			return false;
 		} finally {
 			ConnectionProvider.closeQuietly(ps);
@@ -101,13 +104,16 @@ public class UserAccountDAO {
 			ps.setString(2, passwordSalt);
 			ps.setString(3, username);
 			int status = ps.executeUpdate();
-			if (status == 1)
+			if (status == 1) {
+				log.info("SUCCESS :: Change password for user : " + username);
 				return true;
-			else
+			}
+			else {
+				log.info("FAILED :: Change password for user : " + username + " with status : " + status);
 				return false;
+			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error("FAILED :: Change password for user : " + username, e);
 		} finally {
 			ConnectionProvider.closeQuietly(ps);
 			ConnectionProvider.closeQuietly(con);

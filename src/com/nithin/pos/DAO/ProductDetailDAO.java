@@ -7,10 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.nithin.pos.POJO.ProductDetail;
 import com.nithin.pos.Util.ConnectionProvider;
 
 public class ProductDetailDAO {
+	final static Logger log = Logger.getLogger(ProductDetailDAO.class);
 	public static boolean createProduct(ProductDetail productDetail) {
 		Connection con = ConnectionProvider.getCon();
 		String sql = "INSERT INTO PRODUCT_DETAIL(PRODUCT_NAME,QUANTITY,PRICE) VALUES(?,?,?)";
@@ -21,13 +24,16 @@ public class ProductDetailDAO {
 			ps.setInt(2, productDetail.getQuantity());
 			ps.setFloat(3, productDetail.getPrice());
 			int status = ps.executeUpdate();
-			if (status == 1)
+			if (status == 1) {
+				log.info("Product :: " + productDetail.getProductName() + " added successfully");
 				return true;
-			else
+			}
+			else {
+				log.warn("Product :: " + productDetail.getProductName() + " NOT added with status : " + status);
 				return false;
+			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error("Product insertion failed ", e);
 			return false;
 		} finally {
 			ConnectionProvider.closeQuietly(ps);
@@ -54,8 +60,7 @@ public class ProductDetailDAO {
 			 }
 			 return productsDetail;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error("Products retrieval failed ", e);
 			throw new RuntimeException();
 		} finally {
 			ConnectionProvider.closeQuietly(rs);

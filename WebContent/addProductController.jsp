@@ -16,13 +16,13 @@
 			productDetail.setPrice(Float.parseFloat(request.getParameter("price")));
 			if (productDetail.createProduct()) {
 %>
-	<h3>New product <% out.println(productName); %> created</h3>
+	<h4>New product <% out.println(productName); %> added</h4>
 	<jsp:include page="welcome.jsp"></jsp:include>
 <%				
 			}
 			else {
 %>
-	<h3>New product creation failed due to error, please try again</h3>
+	<h3>New product addition failed due to error, please try again</h3>
 	<jsp:include page="addProduct.jsp"></jsp:include>
 <%
 			}

@@ -31,3 +31,5 @@ Adding new products
 Update existing products like rate, quantity, etc..
 Create view all my managed member
 Create generate bill page
+Tinkering to remove meaningless titles that still exists(hidden)
+Fix database warning regarding SSL connection - Done
