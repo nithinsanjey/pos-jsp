@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<title>Insert title here</title>
+<title>Welcome</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body class="container-fluid">

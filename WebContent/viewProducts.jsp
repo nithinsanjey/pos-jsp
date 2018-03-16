@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Add product</title>
+<title>View product</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <style type="text/css">
 table, th, td {
